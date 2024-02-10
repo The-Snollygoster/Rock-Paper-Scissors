@@ -6,33 +6,81 @@
     <title>Document</title>
 </head>
 <body>
-    <style>
+<script>
+    // Function to get the computers choice and assign it to the 'x' variable
+    function getComputerChoice() {
+        function getRandomInt(max) {
+            return Math.floor(Math.random()*max);
+        }
 
-        /* create a function (getComputerChoice) that will return rock, paper or scissors */
-        /* create a function that takes the player input of rock, paper or scissors */
-        /* return a string that declares the winner of the round */
-        /* write a new function (playGame) that uses the previous function inside of it to play a five round game and only report a winner at the end */
+        let randomInt = getRandomInt(3) 
+                    
+        if (randomInt === 0) {
+            computerChoice = 'rock';
+        } else if (randomInt === 1) {
+            computerChoice = 'paper';
+        } else {
+            computerChoice = 'scissors';
+        }
+        return computerChoice
+    }
+    let x = getComputerChoice();
 
-        /* Computer choice function */
-        /* I need to declare 3 variables (rock,paper, scissors) */
-        /* I need the computer to choose one of those variables at random */
+    // Function to get the players choice via prompt and assign it to the 'y' variable 
+    function getPlayerChoice() {
+        let input = prompt('Pick rock, paper or scissors.');
+        input = input.toLowerCase()
+        if (input === 'rock'||input === 'paper'||input === 'scissors') {
+            playerChoice = input;
+        } else {
+            alert('You must pick rock, paper or scissors!')
+        }
+        return playerChoice.toLowerCase();
+    }
+    let y = getPlayerChoice();
 
-        /* player choice function */
-        /* I need to prompt the player for their option */
-        /* I need to check if the input is valid, and make it case insensitive */
+    // Function to play a round 
+    function playRound(input1, input2) {
+        // This converts the string into a simple concatenation of both the player and computer choices
+        // I've only realised after doing this, that this step isn't strictly necessary as I could just concatenate the two results from the get-go
+        if (input1 === 'rock') {
+            player = 'a';
+        } else if (input1 === 'paper') {
+            player = 'b';
+        } else { 
+            player = 'c';
+        }
 
-        /* I need to get the computers chosen variable, and the players chosen variable */
-        /* I need to compare the two variables and write an if statement to dictate who won */
-        /* I need to return a string that declares who won */
-
-        /* I need to add a new function called playGame that plays through 5 rounds */
-        /* I need to track how many rounds the player and computer has won */
-        /* I need to return a string that declares who won only after all 5 rounds */
-
-        /* Use console.log() to display the results of each round and the winner at the end */
-
-        /* possible to create 'helper' functions if they would be useful */
-
-    </style>
+        if (input2 === 'rock') {
+            computer = 'a';
+        } else if (input2 === 'paper') {
+            computer = 'b';
+        } else { 
+            computer = 'c';
+        }
+        return player+computer
+    }
+    // This runs the game using y(player choice) and x(comp choice) as inputs. And gives extra context as to who chose what.
+    let result = playRound(y, x);
+    console.log('You chose '+y)
+    console.log('The computer chose '+x)
+    // This gives the game result, be it a win a loss or a tie by processing the concatenated result
+    if (result === 'ac' || result === 'ba' || result === 'cb') {
+        console.log('Congratulations you won!');
+    } else if (result === 'ab' || result === 'bc' || result === 'ca') {
+        console.log('Commiserations you lost.');
+    } else {
+        console.log('It was a tie!');
+    }
+    
+    // last function to complete tomorrow
+    // function playGame() {
+    //     let gameOne = playRound(y, x)
+    //     let gameTwo = playRound(y, x)
+    //     let gameThree = playRound(y, x)
+    //     let gameFour = playRound(y, x)
+    //     let gameFive = playRound(y, x)
+    // }
+</script>
 </body>
 </html>
