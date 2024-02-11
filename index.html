@@ -35,6 +35,7 @@
                 playerChoice = input;
             } else {
                 alert('You must pick rock, paper or scissors!')
+                playerChoice = getPlayerChoice()
             }
             return playerChoice.toLowerCase();
         }
@@ -48,35 +49,74 @@
 
         // This gives the game result, be it a win a loss or a tie by processing the concatenated result
         if (result === 'rockscissors' || result === 'paperrock' || result === 'scissorspaper') {
-            winner = 'player'
-            console.log('Congratulations you won!');
+            winner = 'You won!';
         } else if (result === 'rockpaper' || result === 'paperscissors' || result === 'scissorsrock') {
-            winner = 'comp'
-            console.log('Commiserations you lost.');
+            winner = 'You lost.';
         } else {
-            console.log('It was a tie!');
+            winner = 'A tie!';
         }
+        console.log(winner)
         return winner
     }
 
+    // This plays an entire game which consists of 5 rounds and tallies the results to return an overall winner
     function playGame() {
         let playerWins = 0
         let compWins = 0
-        
+        let ties = 0
+        // Game 1
         let winner = playRound()
-        if (winner === 'player') {
+        if (winner === 'You won!') {
             playerWins++
-        } else if (winner === 'comp'){
+        } else if (winner === 'You lost.'){
             compWins++
+        } else {
+            ties++
         }
-        
+        // Game 2
+        winner = playRound()
+        if (winner === 'You won!') {
+            playerWins++
+        } else if (winner === 'You lost.'){
+            compWins++
+        } else {
+            ties++
+        }
+        // Game 3
+        winner = playRound()
+        if (winner === 'You won!') {
+            playerWins++
+        } else if (winner === 'You lost.'){
+            compWins++
+        } else {
+            ties++
+        }
+        // Game 4
+        winner = playRound()
+        if (winner === 'You won!') {
+            playerWins++
+        } else if (winner === 'You lost.'){
+            compWins++
+        } else {
+            ties++
+        }
+        // Game 5
+        winner = playRound()
+        if (winner === 'You won!') {
+            playerWins++
+        } else if (winner === 'You lost.'){
+            compWins++
+        } else {
+            ties++
+        }
+        // This compares the tallies to see who's won
         let gameWinner = 'Unknown'        
         if (playerWins > compWins) {
-            gameWinner = 'Congratulations! You won the game!';
+            gameWinner = 'Congratulations! You won the game ' + playerWins + ' to ' + compWins + ' with ' + ties + ' ties';
         } else if (compWins > playerWins) {
-            gameWinner = 'Commiserations. You lost the game.';
+            gameWinner = 'Commiserations. You lost the game ' + compWins + ' to ' + playerWins + ' with ' + ties + ' ties';
         } else {
-            gameWinner = 'Wow, a tie!';
+            gameWinner = 'Wow, a tie! ' + playerWins + ' to ' + compWins + ' with ' + ties + ' ties';
         }
         return gameWinner
     }
