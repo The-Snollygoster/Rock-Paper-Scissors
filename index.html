@@ -7,59 +7,79 @@
 </head>
 <body>
 <script>
-    // Function to get the computers choice and assign it to the 'x' variable
-    function getComputerChoice() {
-        function getRandomInt(max) {
-            return Math.floor(Math.random()*max);
-        }
+    function playRound() {
+        // Function to get the computers choice and assign it to the 'x' variable
+        function getComputerChoice() {
+            function getRandomInt(max) {
+                return Math.floor(Math.random()*max);
+            }
 
-        let randomInt = getRandomInt(3) 
+            let randomInt = getRandomInt(3) 
                     
-        if (randomInt === 0) {
-            computerChoice = 'rock';
-        } else if (randomInt === 1) {
-            computerChoice = 'paper';
-        } else {
-            computerChoice = 'scissors';
+            if (randomInt === 0) {
+                computerChoice = 'rock';
+            } else if (randomInt === 1) {
+                computerChoice = 'paper';
+            } else {
+                computerChoice = 'scissors';
+            }
+            return computerChoice
         }
-        return computerChoice
-    }
-    let x = getComputerChoice();
+        let x = getComputerChoice();
 
-    // Function to get the players choice via prompt and assign it to the 'y' variable 
-    function getPlayerChoice() {
-        let input = prompt('Pick rock, paper or scissors.');
-        input = input.toLowerCase()
-        if (input === 'rock'||input === 'paper'||input === 'scissors') {
-            playerChoice = input;
-        } else {
-            alert('You must pick rock, paper or scissors!')
+        // Function to get the players choice via prompt and assign it to the 'y' variable 
+        function getPlayerChoice() {
+            let input = prompt('Pick rock, paper or scissors.');
+            input = input.toLowerCase()
+            if (input === 'rock'||input === 'paper'||input === 'scissors') {
+                playerChoice = input;
+            } else {
+                alert('You must pick rock, paper or scissors!')
+            }
+            return playerChoice.toLowerCase();
         }
-        return playerChoice.toLowerCase();
-    }
-    let y = getPlayerChoice();
+        let y = getPlayerChoice();
 
-    // This runs the game using y(player choice) and x(comp choice) concatenated as inputs. And gives extra context as to who chose what.
-    let result = y+x
-    console.log('You chose '+y)
-    console.log('The computer chose '+x)
-    // This gives the game result, be it a win a loss or a tie by processing the concatenated result
-    if (result === 'rockscissors' || result === 'paperrock' || result === 'scissorspaper') {
-        console.log('Congratulations you won!');
-    } else if (result === 'rockpaper' || result === 'paperscissors' || result === 'scissorsrock') {
-        console.log('Commiserations you lost.');
-    } else {
-        console.log('It was a tie!');
+        // This runs the game using y(player choice) and x(comp choice) concatenated as inputs. And gives extra context as to who chose what.
+        let result = y+x
+        let winner = 'tie'
+        console.log('You chose '+y)
+        console.log('The computer chose '+x)
+
+        // This gives the game result, be it a win a loss or a tie by processing the concatenated result
+        if (result === 'rockscissors' || result === 'paperrock' || result === 'scissorspaper') {
+            winner = 'player'
+            console.log('Congratulations you won!');
+        } else if (result === 'rockpaper' || result === 'paperscissors' || result === 'scissorsrock') {
+            winner = 'comp'
+            console.log('Commiserations you lost.');
+        } else {
+            console.log('It was a tie!');
+        }
+        return winner
     }
-    
-    // last function to complete tomorrow
-    // function playGame() {
-    //     let gameOne = playRound(y, x)
-    //     let gameTwo = playRound(y, x)
-    //     let gameThree = playRound(y, x)
-    //     let gameFour = playRound(y, x)
-    //     let gameFive = playRound(y, x)
-    // }
+
+    function playGame() {
+        let playerWins = 0
+        let compWins = 0
+        
+        let winner = playRound()
+        if (winner === 'player') {
+            playerWins++
+        } else if (winner === 'comp'){
+            compWins++
+        }
+        
+        let gameWinner = 'Unknown'        
+        if (playerWins > compWins) {
+            gameWinner = 'Congratulations! You won the game!';
+        } else if (compWins > playerWins) {
+            gameWinner = 'Commiserations. You lost the game.';
+        } else {
+            gameWinner = 'Wow, a tie!';
+        }
+        return gameWinner
+    }
 </script>
 </body>
 </html>
