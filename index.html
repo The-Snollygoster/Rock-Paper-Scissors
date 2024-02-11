@@ -39,35 +39,14 @@
     }
     let y = getPlayerChoice();
 
-    // Function to play a round 
-    function playRound(input1, input2) {
-        // This converts the string into a simple concatenation of both the player and computer choices
-        // I've only realised after doing this, that this step isn't strictly necessary as I could just concatenate the two results from the get-go
-        if (input1 === 'rock') {
-            player = 'a';
-        } else if (input1 === 'paper') {
-            player = 'b';
-        } else { 
-            player = 'c';
-        }
-
-        if (input2 === 'rock') {
-            computer = 'a';
-        } else if (input2 === 'paper') {
-            computer = 'b';
-        } else { 
-            computer = 'c';
-        }
-        return player+computer
-    }
-    // This runs the game using y(player choice) and x(comp choice) as inputs. And gives extra context as to who chose what.
-    let result = playRound(y, x);
+    // This runs the game using y(player choice) and x(comp choice) concatenated as inputs. And gives extra context as to who chose what.
+    let result = y+x
     console.log('You chose '+y)
     console.log('The computer chose '+x)
     // This gives the game result, be it a win a loss or a tie by processing the concatenated result
-    if (result === 'ac' || result === 'ba' || result === 'cb') {
+    if (result === 'rockscissors' || result === 'paperrock' || result === 'scissorspaper') {
         console.log('Congratulations you won!');
-    } else if (result === 'ab' || result === 'bc' || result === 'ca') {
+    } else if (result === 'rockpaper' || result === 'paperscissors' || result === 'scissorsrock') {
         console.log('Commiserations you lost.');
     } else {
         console.log('It was a tie!');
