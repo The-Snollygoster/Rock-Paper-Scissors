@@ -1,4 +1,4 @@
-function playRound() {
+function playRound(input) {
     function getComputerChoice() {
         function getRandomInt(max) {
             return Math.floor(Math.random()*max);
@@ -29,6 +29,7 @@ function playRound() {
     // }
     // let y = getPlayerChoice();
 
+    let y = input
     let result = y+x;
     let winner = 'tie';
     const selectors = document.querySelector('#selectors');
@@ -46,20 +47,17 @@ function playRound() {
 
     const rock = document.querySelector('#rock');
     rock.addEventListener('click', () => {
-        let y = 'rock'
-        playRound()
+        playRound('rock')
     });
 
     const paper = document.querySelector('#paper');
     paper.addEventListener('click', () => {
-        let y = 'paper'
-        playRound()
+        playRound('paper')
     });
 
     const scissors = document.querySelector('#scissors');
     scissors.addEventListener('click', () => {
-        let y = 'scissors'
-        playRound()
+        playRound('scissors')
     });
 
     // This function plays an entire game which consists of 5 rounds and tallies the results to return an overall winner I don't know loops yet so I'm just going to call it 5 times.
