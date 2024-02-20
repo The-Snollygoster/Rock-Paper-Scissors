@@ -3,124 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="./index.js" defer></script>
+    <title>Rock Paper Scissors</title>
 </head>
 <body>
-<script>
-    function playRound() {
-        // Function to get the computers random choice of 3 options, and assign that value to the 'x' variable.
-        function getComputerChoice() {
-            function getRandomInt(max) {
-                return Math.floor(Math.random()*max);
-            }
+    <div>
+        <button id='rock'></button>
+        <button id='paper'></button>
+        <button id='scissors'></button>
+    </div>
 
-            let randomInt = getRandomInt(3) 
-                    
-            if (randomInt === 0) {
-                computerChoice = 'rock';
-            } else if (randomInt === 1) {
-                computerChoice = 'paper';
-            } else {
-                computerChoice = 'scissors';
-            }
-            return computerChoice
-        }
-        let x = getComputerChoice();
-
-        // Function to get the players choice via prompt and assign its value to the 'y' variable. It is case insensitive and will re-ask for an input if invalid.
-        function getPlayerChoice() {
-            let input = prompt('Pick rock, paper or scissors.');
-            input = input.toLowerCase()
-            if (input === 'rock'||input === 'paper'||input === 'scissors') {
-                playerChoice = input;
-            } else {
-                alert('You must pick rock, paper or scissors!')
-                playerChoice = getPlayerChoice()
-            }
-            return playerChoice.toLowerCase();
-        }
-        let y = getPlayerChoice();
-
-        // This outputs results of the round by concatenating y (player choice) and x (computer choice) and going through an if statement of results to find which cases result in which 
-        // winner. I've done it this way to avoid writing an exhaustive if statement for each possible game result and group them by who won to be more concise. I've also added extra
-        // context to be output in the form of who chose what.
-        let result = y+x
-        let winner = 'tie'
-        console.log('You chose '+y)
-        console.log('The computer chose '+x)
-        if (result === 'rockscissors' || result === 'paperrock' || result === 'scissorspaper') {
-            winner = 'You won!';
-        } else if (result === 'rockpaper' || result === 'paperscissors' || result === 'scissorsrock') {
-            winner = 'You lost.';
-        } else {
-            winner = 'A tie!';
-        }
-        // This is so the playRound function actually outputs a value I can use. For example to track how many times someone wins.
-        console.log(winner)
-        return winner
-    }
-
-    // This function plays an entire game which consists of 5 rounds and tallies the results to return an overall winner I don't know loops yet so I'm just going to call it 5 times.
-    function playGame() {
-        let playerWins = 0
-        let compWins = 0
-        let ties = 0
-        // Game 1
-        let winner = playRound()
-        if (winner === 'You won!') {
-            playerWins++
-        } else if (winner === 'You lost.'){
-            compWins++
-        } else {
-            ties++
-        }
-        // Game 2
-        winner = playRound()
-        if (winner === 'You won!') {
-            playerWins++
-        } else if (winner === 'You lost.'){
-            compWins++
-        } else {
-            ties++
-        }
-        // Game 3
-        winner = playRound()
-        if (winner === 'You won!') {
-            playerWins++
-        } else if (winner === 'You lost.'){
-            compWins++
-        } else {
-            ties++
-        }
-        // Game 4
-        winner = playRound()
-        if (winner === 'You won!') {
-            playerWins++
-        } else if (winner === 'You lost.'){
-            compWins++
-        } else {
-            ties++
-        }
-        // Game 5
-        winner = playRound()
-        if (winner === 'You won!') {
-            playerWins++
-        } else if (winner === 'You lost.'){
-            compWins++
-        } else {
-            ties++
-        }
-        // This compares the tallies to see who was the overall game winner and gives additional output such as the score and potential ties.
-        let gameWinner = 'Unknown'        
-        if (playerWins > compWins) {
-            gameWinner = 'Congratulations! You won the game ' + playerWins + ' to ' + compWins + ' with ' + ties + ' ties';
-        } else if (compWins > playerWins) {
-            gameWinner = 'Commiserations. You lost the game ' + compWins + ' to ' + playerWins + ' with ' + ties + ' ties';
-        } else {
-            gameWinner = 'Wow, a tie! ' + playerWins + ' to ' + compWins + ' with ' + ties + ' ties';
-        }
-        return gameWinner
-    }
-</script>
+    <div id='selectors'></div>
+    <div id='winner'></div>
 </body>
 </html>
