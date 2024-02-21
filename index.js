@@ -1,3 +1,4 @@
+const buttons = document.querySelectorAll('button');
 const header = document.querySelector('.header');
 const headerTwo = document.querySelector('.headerTwo');
 const container = document.querySelector('.container');
@@ -58,26 +59,19 @@ function playRound(input) {
     return finalResult.textContent = winner;
 }
 
-const rock = document.querySelector('#rock');
-rock.addEventListener('click', () => {
-    selectors.textContent = '';
-    finalResult.textContent = '';
-    gameWinner.textContent = '';
-    playRound('rock');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        gameWinner.textContent = '';
+        playRound(button.id);
+    });
 });
 
-const paper = document.querySelector('#paper');
-paper.addEventListener('click', () => {
-    selectors.textContent = '';
-    finalResult.textContent = '';
-    gameWinner.textContent = '';
-    playRound('paper');
-});
+// I want to add some kind of break to the selectors and finalResult text. Because if you click a button to play
+// another round, if you and the computer both have the same input, you can't tell if you clicked the button or
+// not. You can't tell if it registered the new game. I want some kind of UX feedback so they know they played 
+// another round. I suppose this would actually not be a problem if I implement the second part.  
 
-const scissors = document.querySelector('#scissors');
-scissors.addEventListener('click', () => {
-    selectors.textContent = '';
-    finalResult.textContent = '';
-    gameWinner.textContent = '';
-    playRound('scissors');
-});
+// I also want to add small animations. When I click a button to start a round, I want the little hands to appear
+// like a virtual game of RPS, and show what you and the computer picked. I'd also like to add some kind of funny
+// image when you win, lose or draw. And then finally maybe some final screen when 5 rounds have been played and 
+// a winner decided.

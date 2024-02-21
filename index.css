@@ -19,7 +19,7 @@ body {
     animation: fadeInAnimation ease 6s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-    animation-delay: 3s;
+    animation-delay: 2s;
 }
 
 .container {
@@ -31,7 +31,7 @@ body {
     animation: fadeInAnimation ease 6s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-    animation-delay: 6s;
+    animation-delay: 5s;
 }
 
 button {
