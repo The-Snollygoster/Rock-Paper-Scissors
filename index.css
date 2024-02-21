@@ -6,10 +6,20 @@ body {
 
 .header {
     text-align: center;
+    opacity: 0;
+    transition: opacity 1s;
+    animation: fadeInAnimation ease 6s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 
 .headerTwo {
     text-align: center;
+    opacity: 0;
+    animation: fadeInAnimation ease 6s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 3s;
 }
 
 .container {
@@ -17,19 +27,23 @@ body {
     gap: 20px;
     justify-content: center;
     margin-top: 5%;
+    opacity: 0;
+    animation: fadeInAnimation ease 6s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 6s;
 }
 
 button {
+    width: 100px;
+    height: 30px;
     border: none;
     border-radius: 10px;
     box-shadow: 0px 0px 2px 2px black;
-    /* This styles my buttons */
 }
 
 button:hover {
     background-color:chocolate
-    /* transition: 07.s; */
-    /* this gives my button a hover state */
 }
 
 #selectors {
@@ -40,4 +54,18 @@ button:hover {
 #winner {
     text-align: center;
     margin: 10px;
+}
+
+#gameWinner {
+    text-align: center;
+    margin: 30px;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
