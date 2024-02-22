@@ -10,14 +10,25 @@
 <body>
     <h1 class="header">THIS IS ROCK-PAPER-SCISSORS!</h1>
     <h2 class="headerTwo">Make your choice. First to 5 is the winner.</h2>
+
     <div class="container">
-        <button id='rock'>Rock</button>
-        <button id='paper'>Paper</button>
-        <button id='scissors'>Scissors</button>
+        <div class='leftHand'>
+            <img id='leftHand' src='./imgs/rockhand.png' alt='Hand'>
+        </div>
+        <div class='wrapper'>
+            <div class='buttonlist'>
+                <button id='rock'>Rock</button>
+                <button id='paper'>Paper</button>
+                <button id='scissors'>Scissors</button>
+            </div>
+        <div id='selectors'></div>
+        <div id='winner'></div>
+        </div>
+        <div class='rightHand'>
+            <img id='rightHand' src='./imgs/rockhand.png' alt='Hand'>
+        </div>
     </div>
 
-    <div id='selectors'></div>
-    <div id='winner'></div>
     <div id="gameWinner"></div>
 </body>
 </html>

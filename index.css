@@ -8,7 +8,7 @@ body {
     text-align: center;
     opacity: 0;
     transition: opacity 1s;
-    animation: fadeInAnimation ease 6s;
+    animation: fadeInAnimation ease 4s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
@@ -16,7 +16,7 @@ body {
 .headerTwo {
     text-align: center;
     opacity: 0;
-    animation: fadeInAnimation ease 6s;
+    animation: fadeInAnimation ease 4s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     animation-delay: 2s;
@@ -24,14 +24,20 @@ body {
 
 .container {
     display: flex;
+    flex: 0, 0, 0;
     gap: 20px;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 5%;
     opacity: 0;
-    animation: fadeInAnimation ease 6s;
+    animation: fadeInAnimation ease 4s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-    animation-delay: 5s;
+    animation-delay: 4s;
+}
+
+.buttonlist {
+    display: flex;
+    justify-content: center;
 }
 
 button {
@@ -59,6 +65,24 @@ button:hover {
 #gameWinner {
     text-align: center;
     margin: 30px;
+}
+
+#ok {
+    text-align: center;
+    margin: 30px;
+}
+
+#leftHand {
+    transform: scalex(-1);
+    margin-left: 400px;
+    width: 200px;
+    height: auto;
+}
+
+#rightHand {
+    margin-right: 400px;
+    width: 200px;
+    height: auto;
 }
 
 @keyframes fadeInAnimation {
