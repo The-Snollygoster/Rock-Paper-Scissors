@@ -8,6 +8,12 @@ let ties = 0;
 let result = '';
 let leftHand = document.querySelector('#leftHand');
 let rightHand = document.querySelector('#rightHand');
+let stars = document.querySelector('.stars');
+let player = document.querySelector('#player');
+let comp = document.querySelector('#comp');
+let newGame = document.querySelector('#newGame');
+var newGameButton = document.createElement('button');
+newGameButton.textContent = 'AGAIN!';
 
 function playRound(input) {
     function getComputerChoice() {
@@ -36,6 +42,9 @@ function playRound(input) {
         leftHand.src = './imgs/scissorshand.png';
     }
 
+    let star = document.createElement('img');
+    star.src = './imgs/starsmall.png';
+
     let x = getComputerChoice();
     let y = input;
     let result = y+x;
@@ -44,10 +53,12 @@ function playRound(input) {
     if (result === 'rockscissors' || result === 'paperrock' || result === 'scissorspaper') {
         winner = 'You won!';
         playerWins++;
+        player.appendChild(star);
         finalResult.textContent = winner;
     } else if (result === 'rockpaper' || result === 'paperscissors' || result === 'scissorsrock') {
         winner = 'You lost.';
         compWins++;
+        comp.appendChild(star);
         finalResult.textContent = winner;
     } else {
         winner = 'A tie!';
@@ -65,9 +76,13 @@ function playRound(input) {
             leftHand.src = './imgs/loss.png';
             rightHand.src = './imgs/loss.png';
             }
+        document.getElementById('rock').disabled = true;
+        document.getElementById('paper').disabled = true;
+        document.getElementById('scissors').disabled = true;
         playerWins = 0;
         compWins = 0;
         ties = 0;
+        newGame.appendChild(newGameButton);
         return gameWinner.textContent = result;
     };
     return
@@ -78,4 +93,8 @@ buttons.forEach((button) => {
         gameWinner.textContent = '';
         playRound(button.id);
     });
+});
+
+newGameButton.addEventListener('click', () => {
+    location.reload();
 });

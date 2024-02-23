@@ -63,6 +63,8 @@ button:hover {
 }
 
 #gameWinner {
+    display: flex;
+    flex-direction: column;
     text-align: center;
     margin: 30px;
 }
@@ -83,6 +85,17 @@ button:hover {
     margin-right: 400px;
     width: 200px;
     height: auto;
+}
+
+.stars {
+    display: flex;
+    justify-content: space-around;
+    height: 40px;
+}
+
+#newGame {
+    display: flex;
+    justify-content: center;
 }
 
 @keyframes fadeInAnimation {
